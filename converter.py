@@ -1,16 +1,21 @@
 import json
+import csv
 
-if __name__ == '__main__':
-    try:
-        with open('input.json', 'r') as f:
-            data = json.loads(f.read())
+json_fp = open("input.json", "r", encoding='utf-8')
+csv_fp = open("output.csv", "w", encoding='utf-8', newline='')
 
-        output = ','.join([*data[0]])
+data_list = json.load(json_fp)
+sheet_title = data_list[0].keys()
+sheet_data = []
 
-        for obj in data:
-            output += f'\n{obj["name"]},{obj["age"]},{obj["birth"]}'
+for data in data_list:
+    sheet_data.append(data.values())
 
-        with open('output.csv', 'w') as f:
-            f.write(output)
-    except Exception as ex:
-        print(f'Error: {str(ex)}')
+writer = csv.writer(csv_fp)
+
+writer.writerow(sheet_title)
+
+writer.writerows(sheet_data)
+
+json_fp.close()
+csv_fp.close()

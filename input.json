@@ -1,8 +1,8 @@
 [
   {
-    "name": "foo",
+    "name": "中文",
     "age": 26,
-    "birth": "1994"
+    "birth": ","
   },
   {
     "name": "bar",
