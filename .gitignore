@@ -1,3 +1,6 @@
 .vscode
 .idea
 output.csv
+.pytest_cache
+venv
+__pycache__
